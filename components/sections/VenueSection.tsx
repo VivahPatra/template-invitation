@@ -1,13 +1,14 @@
 'use client'
 import { motion } from 'framer-motion'
 import { MapPin, Navigation, ExternalLink } from 'lucide-react'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import { fadeUp, scaleIn, staggerFast } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function VenueSection() {
+  const weddingData = useWeddingData()
   const { venue } = weddingData
   return (
     <SectionWrapper id="venue" className="py-24" style={{ background: 'linear-gradient(160deg, #0e0618 0%, #1c0d2e 50%, #120520 100%)' }}>

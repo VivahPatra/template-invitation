@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { WeddingDataProvider } from '@/context/WeddingDataContext'
 import CustomCursor from '@/components/layout/CustomCursor'
 import LoadingScreen from '@/components/layout/LoadingScreen'
 import FloatingFABs from '@/components/layout/FloatingFABs'
@@ -21,7 +22,7 @@ export default function WeddingPage() {
   const [loading, setLoading] = useState(true)
 
   return (
-    <>
+    <WeddingDataProvider>
       <CustomCursor />
       <AnimatePresence>
         {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
@@ -60,6 +61,6 @@ export default function WeddingPage() {
           </div>
         </>
       )}
-    </>
+    </WeddingDataProvider>
   )
 }

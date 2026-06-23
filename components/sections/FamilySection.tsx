@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import FamilyCard from '@/components/ui/FamilyCard'
@@ -8,6 +8,7 @@ import { fadeUp, staggerFast } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function FamilySection() {
+  const weddingData = useWeddingData()
   return (
     <SectionWrapper id="family" className="py-24" style={{ background: 'linear-gradient(160deg, #1c0b02 0%, #2e1508 50%, #1a0a00 100%)' }}>
       <div className="max-w-5xl mx-auto">

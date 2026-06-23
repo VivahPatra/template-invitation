@@ -1,7 +1,7 @@
 'use client'
 import { createContext, useContext } from 'react'
 import { useAudio } from '@/lib/useAudio'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 
 interface AudioContextValue {
   isPlaying: boolean
@@ -14,6 +14,7 @@ const AudioContext = createContext<AudioContextValue>({
 })
 
 export function AudioProvider({ children }: { children: React.ReactNode }) {
+  const weddingData = useWeddingData()
   const value = useAudio(weddingData.invitationMusic)
   return <AudioContext.Provider value={value}>{children}</AudioContext.Provider>
 }

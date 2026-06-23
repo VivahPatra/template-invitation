@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import DevAssetLabel from '@/components/ui/DevAssetLabel'
@@ -9,6 +9,7 @@ import { scaleIn, staggerFast } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function BlessingsSection() {
+  const weddingData = useWeddingData()
   return (
     <SectionWrapper id="blessings" className="py-24" style={{ background: 'linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%)' }}>
       <div className="max-w-4xl mx-auto text-center">

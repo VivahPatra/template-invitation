@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import Lightbox from '@/components/ui/Lightbox'
@@ -37,6 +37,7 @@ function GalleryThumb({ src, index, onClick }: { src: string; index: number; onC
 }
 
 export default function GallerySection() {
+  const weddingData = useWeddingData()
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const images = weddingData.galleryImages
   const close = () => setLightboxIndex(null)

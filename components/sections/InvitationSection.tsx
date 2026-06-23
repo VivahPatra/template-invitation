@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import { fadeUp, staggerFast } from '@/lib/animations'
@@ -26,6 +26,7 @@ function KasavuCorner({ flip = false, flipY = false }: { flip?: boolean; flipY?:
 }
 
 export default function InvitationSection() {
+  const weddingData = useWeddingData()
   const date = weddingData.weddingDate
   const dateStr = date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
 

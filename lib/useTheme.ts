@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 
 export type Theme = 'gold' | 'maroon' | 'emerald'
 
@@ -11,6 +11,7 @@ const THEME_CLASSES: Record<Theme, string> = {
 }
 
 export function useTheme() {
+  const weddingData = useWeddingData()
   const [theme, setThemeState] = useState<Theme>(weddingData.defaultTheme)
   const [mounted, setMounted] = useState(false)
 
