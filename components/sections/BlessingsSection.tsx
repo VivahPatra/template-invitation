@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { useEditMode } from '@/context/EditModeContext'
+import EditableText from '@/components/ui/EditableText'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import DevAssetLabel from '@/components/ui/DevAssetLabel'
@@ -10,6 +12,8 @@ import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function BlessingsSection() {
   const weddingData = useWeddingData()
+  const { isEditing, data: editData } = useEditMode()
+  const d = isEditing ? editData : weddingData
   return (
     <SectionWrapper id="blessings" className="py-24" style={{ background: 'linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%)' }}>
       <div className="max-w-4xl mx-auto text-center">
@@ -23,7 +27,7 @@ export default function BlessingsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {weddingData.blessings.map((blessing, i) => (
+          {d.blessings.map((blessing, i) => (
             <motion.div
               key={i}
               variants={scaleIn}
@@ -45,20 +49,26 @@ export default function BlessingsSection() {
                   </DevAssetLabel>
                 )}
                 <div>
-                  <p className="font-serif font-semibold text-base" style={{ color: 'var(--color-text)' }}>
+                  <EditableText field="name" index={i} arrayField="blessings" tag="p"
+                    className="font-serif font-semibold text-base"
+                    style={{ color: 'var(--color-text)' }}
+                  >
                     {blessing.name}
-                  </p>
-                  <p className="font-sans text-xs tracking-wide mt-0.5" style={{ color: 'var(--color-accent)' }}>
+                  </EditableText>
+                  <EditableText field="relation" index={i} arrayField="blessings" tag="p"
+                    className="font-sans text-xs tracking-wide mt-0.5"
+                    style={{ color: 'var(--color-accent)' }}
+                  >
                     {blessing.relation}
-                  </p>
+                  </EditableText>
                 </div>
               </div>
-              <p
+              <EditableText field="message" index={i} arrayField="blessings" tag="p" multiline
                 className="font-serif text-sm leading-relaxed italic"
                 style={{ color: 'var(--color-text)', opacity: 0.8 }}
               >
                 &ldquo;{blessing.message}&rdquo;
-              </p>
+              </EditableText>
             </motion.div>
           ))}
         </motion.div>

@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { WeddingDataProvider } from '@/context/WeddingDataContext'
+import { EditModeProvider } from '@/context/EditModeContext'
 import CustomCursor from '@/components/layout/CustomCursor'
 import LoadingScreen from '@/components/layout/LoadingScreen'
 import FloatingFABs from '@/components/layout/FloatingFABs'
@@ -23,44 +24,46 @@ export default function WeddingPage() {
 
   return (
     <WeddingDataProvider>
-      <CustomCursor />
-      <AnimatePresence>
-        {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
-      </AnimatePresence>
+      <EditModeProvider>
+        <CustomCursor />
+        <AnimatePresence>
+          {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+        </AnimatePresence>
 
-      {!loading && (
-        <>
-          <FloatingFABs />
-          <ParallaxLanterns />
-          <div className="relative overflow-x-hidden">
-            <main>
-              <HeroSection />
-              <PeacockDivider />
-              <DiDecor />
-              <InvitationSection />
-              <PeacockDivider />
-              <DiDecor />
-              <CoupleStory />
-              <PeacockDivider />
-              <DiDecor />
-              <GallerySection />
-              <PeacockDivider />
-              <DiDecor />
-              <EventsSection />
-              <PeacockDivider />
-              <DiDecor />
-              <RSVPSection />
-              <PeacockDivider />
-              <DiDecor />
-              <CountdownSection />
-              <PeacockDivider />
-              <DiDecor />
-              <InfoSection />
-              <FooterSection />
-            </main>
-          </div>
-        </>
-      )}
+        {!loading && (
+          <>
+            <FloatingFABs />
+            <ParallaxLanterns />
+            <div className="relative overflow-x-hidden">
+              <main>
+                <HeroSection />
+                <PeacockDivider />
+                <DiDecor />
+                <InvitationSection />
+                <PeacockDivider />
+                <DiDecor />
+                <CoupleStory />
+                <PeacockDivider />
+                <DiDecor />
+                <GallerySection />
+                <PeacockDivider />
+                <DiDecor />
+                <EventsSection />
+                <PeacockDivider />
+                <DiDecor />
+                <RSVPSection />
+                <PeacockDivider />
+                <DiDecor />
+                <CountdownSection />
+                <PeacockDivider />
+                <DiDecor />
+                <InfoSection />
+                <FooterSection />
+              </main>
+            </div>
+          </>
+        )}
+      </EditModeProvider>
     </WeddingDataProvider>
   )
 }

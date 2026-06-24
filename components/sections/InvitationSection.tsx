@@ -1,6 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { useEditMode } from '@/context/EditModeContext'
+import EditableText from '@/components/ui/EditableText'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import { fadeUp, staggerFast } from '@/lib/animations'
@@ -27,7 +29,9 @@ function KasavuCorner({ flip = false, flipY = false }: { flip?: boolean; flipY?:
 
 export default function InvitationSection() {
   const weddingData = useWeddingData()
-  const date = weddingData.weddingDate
+  const { isEditing, data: editData } = useEditMode()
+  const d = isEditing ? editData : weddingData
+  const date = d.weddingDate
   const dateStr = date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
 
   return (
@@ -103,11 +107,11 @@ export default function InvitationSection() {
                   className="font-display shimmer-text block"
                   style={{ fontSize: 'clamp(2rem, 5.5vw, 3rem)' }}
                 >
-                  {weddingData.groomName}
+                  <EditableText field="groomName">{d.groomName}</EditableText>
                 </span>
-                {weddingData.groomParents && (
+                {d.groomParents && (
                   <p className="font-sans text-xs tracking-wide mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
-                    Son of {weddingData.groomParents}
+                    Son of <EditableText field="groomParents">{d.groomParents}</EditableText>
                   </p>
                 )}
               </div>
@@ -122,11 +126,11 @@ export default function InvitationSection() {
                   className="font-display shimmer-text block"
                   style={{ fontSize: 'clamp(2rem, 5.5vw, 3rem)' }}
                 >
-                  {weddingData.brideName}
+                  <EditableText field="brideName">{d.brideName}</EditableText>
                 </span>
-                {weddingData.brideParents && (
+                {d.brideParents && (
                   <p className="font-sans text-xs tracking-wide mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
-                    Daughter of {weddingData.brideParents}
+                    Daughter of <EditableText field="brideParents">{d.brideParents}</EditableText>
                   </p>
                 )}
               </div>
@@ -139,21 +143,21 @@ export default function InvitationSection() {
               <line x1="172" y1="6" x2="320" y2="6" stroke="var(--color-accent)" strokeWidth="0.7" opacity="0.35"/>
             </svg>
 
-            <p
+            <EditableText field="invitationText" tag="p" multiline
               className="font-serif text-lg leading-relaxed mb-8"
               style={{ color: 'var(--color-text)', opacity: 0.8 }}
             >
               Together with our families, we joyfully invite you to witness and bless the
               beginning of our forever. Your presence will make our celebration truly complete.
-            </p>
+            </EditableText>
 
             <Divider />
 
             {/* Date / venue / hashtag */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 font-sans text-sm tracking-wide" style={{ color: 'var(--color-accent)', opacity: 0.75 }}>
-              <span>📅 &nbsp; {dateStr}</span>
-              <span className="hidden sm:block opacity-30">◆</span>
-              <span>✉️ &nbsp; {weddingData.hashtag}</span>
+              <span>&#x1f4c5; &nbsp; {dateStr}</span>
+              <span className="hidden sm:block opacity-30">&#x25c6;</span>
+              <span>&#x2709;&#xfe0f; &nbsp; <EditableText field="hashtag">{d.hashtag}</EditableText></span>
             </div>
           </motion.div>
         </motion.div>
