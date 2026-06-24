@@ -76,6 +76,12 @@ export default function HeroSection() {
           </h1>
         </motion.div>
 
+        {weddingData.heroSubtitle && (
+          <motion.p variants={fadeUp} className="font-sans text-sm tracking-[0.2em] uppercase mb-4" style={{ color: 'var(--color-muted)', opacity: 0.8 }}>
+            {weddingData.heroSubtitle}
+          </motion.p>
+        )}
+
         <motion.div variants={fadeUp} className="flex flex-col items-center gap-2">
           <div className="h-px w-20 opacity-50" style={{ background: 'var(--color-accent)' }} />
           <p className="font-sans text-xs tracking-[0.35em] uppercase" style={{ color: 'var(--color-accent)' }}>

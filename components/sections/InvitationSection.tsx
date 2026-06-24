@@ -48,7 +48,7 @@ export default function InvitationSection() {
             className="font-sans text-xs tracking-[0.45em] uppercase mb-5 glow-pulse"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; With Joy &amp; Blessings &nbsp; <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
+            <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; {weddingData.invitationSubtitle || 'With Joy & Blessings'} &nbsp; <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
           </motion.p>
 
           <motion.h2
@@ -56,7 +56,7 @@ export default function InvitationSection() {
             className="font-display shimmer-text mb-10"
             style={{ fontSize: 'clamp(2.8rem, 6vw, 4.2rem)', lineHeight: 1.1 }}
           >
-            You Are Invited
+            {weddingData.invitationHeading || 'You Are Invited'}
           </motion.h2>
 
           {/* Ornate invitation card */}
@@ -92,7 +92,7 @@ export default function InvitationSection() {
               </div>
               <p className="font-sans text-xs tracking-[0.35em] uppercase mt-2 glow-pulse"
                 style={{ color: 'var(--color-accent)', opacity: 0.55 }}>
-                ॥ Shree Ganeshaya Namah ॥
+                {weddingData.invitationBlessing || '॥ Shree Ganeshaya Namah ॥'}
               </p>
             </div>
 
@@ -143,8 +143,7 @@ export default function InvitationSection() {
               className="font-serif text-lg leading-relaxed mb-8"
               style={{ color: 'var(--color-text)', opacity: 0.8 }}
             >
-              Together with our families, we joyfully invite you to witness and bless the
-              beginning of our forever. Your presence will make our celebration truly complete.
+              {weddingData.invitationText || 'Together with our families, we joyfully invite you to witness and bless the beginning of our forever. Your presence will make our celebration truly complete.'}
             </p>
 
             <Divider />

@@ -24,7 +24,7 @@ export default function RSVPSection() {
       />
 
       <div className="max-w-2xl mx-auto text-center relative z-10">
-        <SectionHeading en="Will You Attend?" hi="शादी में आएंगे?" />
+        <SectionHeading en={weddingData.rsvpHeading || "Will You Attend?"} hi="शादी में आएंगे?" />
         <Divider />
 
         <motion.p
@@ -32,8 +32,8 @@ export default function RSVPSection() {
           className="font-sans text-base leading-relaxed mb-10"
           style={{ color: 'var(--color-muted)' }}
         >
-          We would be delighted to have you celebrate with us. Please RSVP by{' '}
-          <span style={{ color: 'var(--color-accent)' }}>November 1, 2026</span>.
+          {weddingData.rsvpText || 'We would be delighted to have you celebrate with us.'} Please RSVP by{' '}
+          <span style={{ color: 'var(--color-accent)' }}>{weddingData.rsvpDeadline || 'November 1, 2026'}</span>.
         </motion.p>
 
         <motion.div
