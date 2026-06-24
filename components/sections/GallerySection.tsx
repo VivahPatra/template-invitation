@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import Lightbox from '@/components/ui/Lightbox'
@@ -39,10 +38,8 @@ function GalleryThumb({ src, index, onClick }: { src: string; index: number; onC
 
 export default function GallerySection() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
-  const images = d.galleryImages
+  const images = weddingData.galleryImages
   const close = () => setLightboxIndex(null)
   const prev = () => setLightboxIndex(i => (i === null ? 0 : (i - 1 + images.length) % images.length))
   const next = () => setLightboxIndex(i => (i === null ? 0 : (i + 1) % images.length))

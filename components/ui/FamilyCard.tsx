@@ -2,12 +2,10 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FamilyMember } from '@/types/wedding.types'
-import EditableText from '@/components/ui/EditableText'
 import { scaleIn } from '@/lib/animations'
 import DevAssetLabel from '@/components/ui/DevAssetLabel'
 
-export default function FamilyCard({ member, index, side }: { member: FamilyMember; index: number; side: 'bride' | 'groom' }) {
-  const arrayField = side === 'bride' ? 'familyBride' : 'familyGroom'
+export default function FamilyCard({ member }: { member: FamilyMember }) {
   return (
     <motion.div variants={scaleIn} className="flex flex-col items-center text-center gap-3">
       <DevAssetLabel path={member.photo}>
@@ -19,18 +17,12 @@ export default function FamilyCard({ member, index, side }: { member: FamilyMemb
         </div>
       </DevAssetLabel>
       <div>
-        <EditableText field="name" index={index} arrayField={arrayField} tag="p"
-          className="font-serif font-semibold text-sm"
-          style={{ color: 'var(--color-text)' }}
-        >
+        <p className="font-serif font-semibold text-sm" style={{ color: 'var(--color-text)' }}>
           {member.name}
-        </EditableText>
-        <EditableText field="relation" index={index} arrayField={arrayField} tag="p"
-          className="font-sans text-xs tracking-wide mt-0.5"
-          style={{ color: 'var(--color-accent)' }}
-        >
+        </p>
+        <p className="font-sans text-xs tracking-wide mt-0.5" style={{ color: 'var(--color-accent)' }}>
           {member.relation}
-        </EditableText>
+        </p>
       </div>
     </motion.div>
   )

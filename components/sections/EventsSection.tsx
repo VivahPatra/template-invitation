@@ -1,8 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import type { WeddingEvent } from '@/types/wedding.types'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import { staggerFast, fadeUp } from '@/lib/animations'
@@ -19,22 +17,20 @@ const EVENT_COLORS: Record<string, string> = {
 
 // Fallback emoji when no image
 const EVENT_EMOJI: Record<string, string> = {
-  engagement: '\u{1F48D}',
-  mehendi:    '\u{1F33F}',
-  haldi:      '\u{1F33C}',
-  sangeet:    '\u{1F3B6}',
-  wedding:    '\u{1F549}️',
+  engagement: '💍',
+  mehendi:    '🌿',
+  haldi:      '🌼',
+  sangeet:    '🎶',
+  wedding:    '🕉️',
   reception:  '✨',
 }
 
 function EventNode({
   event,
-  eventIndex,
   isHero = false,
   delay = 0,
 }: {
   event: WeddingEvent
-  eventIndex: number
   isHero?: boolean
   delay?: number
 }) {
@@ -116,7 +112,7 @@ function EventNode({
 
       {/* Name + date */}
       <div className="text-center mt-3">
-        <EditableText field="name" index={eventIndex} arrayField="events" tag="p"
+        <p
           className="font-display tracking-wide transition-colors duration-300"
           style={{
             color: 'var(--color-text)',
@@ -124,12 +120,12 @@ function EventNode({
           }}
         >
           {event.name}
-        </EditableText>
+        </p>
         <p
           className="font-sans text-xs tracking-widest mt-0.5"
           style={{ color: color, opacity: 0.7 }}
         >
-          <EditableText field="date" index={eventIndex} arrayField="events">{event.date.replace(', 2026', '')}</EditableText> &middot; <EditableText field="time" index={eventIndex} arrayField="events">{event.time}</EditableText>
+          {event.date.replace(', 2026', '')} · {event.time}
         </p>
       </div>
 
@@ -144,18 +140,12 @@ function EventNode({
           backdropFilter: 'blur(4px)',
         }}
       >
-        <EditableText field="venue" index={eventIndex} arrayField="events" tag="p"
-          className="font-serif text-sm"
-          style={{ color: 'var(--color-text)', opacity: 0.85 }}
-        >
+        <p className="font-serif text-sm" style={{ color: 'var(--color-text)', opacity: 0.85 }}>
           {event.venue}
-        </EditableText>
-        <EditableText field="venueAddress" index={eventIndex} arrayField="events" tag="p"
-          className="font-sans text-xs mt-1"
-          style={{ color: 'var(--color-muted)', opacity: 0.7 }}
-        >
+        </p>
+        <p className="font-sans text-xs mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
           {event.venueAddress.split(',')[0]}
-        </EditableText>
+        </p>
         {event.venueMapLink && (
           <a
             href={event.venueMapLink}
@@ -164,7 +154,7 @@ function EventNode({
             className="inline-block mt-2 font-sans text-xs tracking-wider underline underline-offset-2 transition-opacity duration-200 hover:opacity-100"
             style={{ color: color, opacity: 0.85 }}
           >
-            &#x1f4cd; View on Maps
+            📍 View on Maps
           </a>
         )}
       </div>
@@ -174,14 +164,12 @@ function EventNode({
 
 export default function EventsSection() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
-  const events = d.events
+  const events = weddingData.events
   const half = Math.ceil(events.length / 2)
   const row1 = events.slice(0, half)       // Engagement, Mehendi, Haldi
   const row2 = events.slice(half)           // Sangeet, Wedding, Reception
 
-  // Wedding is last in row2 if 6 events -> index 1 in row2 (center)
+  // Wedding is last in row2 if 6 events → index 1 in row2 (center)
   const heroId = 'wedding'
 
   return (
@@ -257,7 +245,7 @@ export default function EventsSection() {
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-10 mb-6 md:mb-0 md:relative md:z-10">
             {row1.map((ev, i) => (
-              <EventNode key={ev.id} event={ev} eventIndex={i} delay={i * 0.1} />
+              <EventNode key={ev.id} event={ev} delay={i * 0.1} />
             ))}
           </div>
 
@@ -267,7 +255,6 @@ export default function EventsSection() {
               <EventNode
                 key={ev.id}
                 event={ev}
-                eventIndex={half + i}
                 isHero={ev.id === heroId}
                 delay={0.15 + i * 0.1}
               />

@@ -1,8 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import FamilyCard from '@/components/ui/FamilyCard'
@@ -11,8 +9,6 @@ import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function FamilySection() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   return (
     <SectionWrapper id="family" className="py-24" style={{ background: 'linear-gradient(160deg, #1c0b02 0%, #2e1508 50%, #1a0a00 100%)' }}>
       <div className="max-w-5xl mx-auto">
@@ -28,7 +24,7 @@ export default function FamilySection() {
               className="font-display text-3xl text-center mb-8"
               style={{ color: 'var(--color-accent)' }}
             >
-              <EditableText field="brideName">{d.brideName}</EditableText>&apos;s Family
+              {weddingData.brideName}&apos;s Family
             </motion.h3>
             <motion.div
               className="grid grid-cols-2 sm:grid-cols-4 gap-6"
@@ -37,8 +33,8 @@ export default function FamilySection() {
               whileInView="visible"
               viewport={{ once: true, margin: '-40px' }}
             >
-              {d.familyBride.map((m, i) => (
-                <FamilyCard key={i} member={m} index={i} side="bride" />
+              {weddingData.familyBride.map((m, i) => (
+                <FamilyCard key={i} member={m} />
               ))}
             </motion.div>
           </div>
@@ -49,7 +45,7 @@ export default function FamilySection() {
               className="font-display text-3xl text-center mb-8"
               style={{ color: 'var(--color-accent)' }}
             >
-              <EditableText field="groomName">{d.groomName}</EditableText>&apos;s Family
+              {weddingData.groomName}&apos;s Family
             </motion.h3>
             <motion.div
               className="grid grid-cols-2 sm:grid-cols-4 gap-6"
@@ -58,8 +54,8 @@ export default function FamilySection() {
               whileInView="visible"
               viewport={{ once: true, margin: '-40px' }}
             >
-              {d.familyGroom.map((m, i) => (
-                <FamilyCard key={i} member={m} index={i} side="groom" />
+              {weddingData.familyGroom.map((m, i) => (
+                <FamilyCard key={i} member={m} />
               ))}
             </motion.div>
           </div>

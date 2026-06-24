@@ -1,10 +1,9 @@
 'use client'
 import { motion } from 'framer-motion'
 import { InfoCard as InfoCardType } from '@/types/wedding.types'
-import EditableText from '@/components/ui/EditableText'
 import { scaleIn } from '@/lib/animations'
 
-export default function InfoCard({ card, index }: { card: InfoCardType; index: number }) {
+export default function InfoCard({ card }: { card: InfoCardType }) {
   return (
     <motion.div
       variants={scaleIn}
@@ -28,19 +27,13 @@ export default function InfoCard({ card, index }: { card: InfoCardType; index: n
 
       <span className="text-3xl">{card.icon}</span>
       <div>
-        <EditableText field="title" index={index} arrayField="infoCards" tag="h3"
-          className="font-serif font-semibold text-lg"
-          style={{ color: 'var(--color-accent2)' }}
-        >
+        <h3 className="font-serif font-semibold text-lg" style={{ color: 'var(--color-accent2)' }}>
           {card.title}
-        </EditableText>
+        </h3>
       </div>
-      <EditableText field="description" index={index} arrayField="infoCards" tag="p" multiline
-        className="font-sans text-sm leading-relaxed"
-        style={{ color: 'var(--color-muted)' }}
-      >
+      <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
         {card.description}
-      </EditableText>
+      </p>
     </motion.div>
   )
 }

@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
 import { useCountdown } from '@/lib/useCountdown'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
@@ -42,9 +41,7 @@ function CountUnit({ value, label, labelHindi }: UnitProps) {
 
 export default function CountdownSection() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
-  const { days, hours, minutes, seconds, isPast } = useCountdown(d.weddingDate)
+  const { days, hours, minutes, seconds, isPast } = useCountdown(weddingData.weddingDate)
 
   return (
     <SectionWrapper id="countdown" className="py-24" style={{ background: 'linear-gradient(160deg, #1e1408 0%, #2e2010 50%, #261a0c 100%)' }}>
@@ -54,7 +51,7 @@ export default function CountdownSection() {
 
         {isPast ? (
           <motion.p variants={fadeUp} className="font-display text-4xl" style={{ color: 'var(--color-accent)' }}>
-            &#x1F48D; We Got Married!
+            💍 We Got Married!
           </motion.p>
         ) : (
           <motion.div

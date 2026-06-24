@@ -2,8 +2,6 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import DevAssetLabel from '@/components/ui/DevAssetLabel'
@@ -12,8 +10,6 @@ import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function CoupleStory() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
   return (
     <SectionWrapper id="story" className="py-24" style={{ background: 'linear-gradient(160deg, #1e1408 0%, #2e2010 50%, #261a0c 100%)' }}>
       <div className="max-w-4xl mx-auto">
@@ -28,7 +24,7 @@ export default function CoupleStory() {
             className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
             style={{ background: 'var(--color-accent-dim)' }}
           />
-          {d.coupleStory.map((milestone, i) => {
+          {weddingData.coupleStory.map((milestone, i) => {
             const isLeft = i % 2 === 0
             return (
               <div key={i} className={`relative flex items-center mb-16 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
@@ -40,24 +36,18 @@ export default function CoupleStory() {
                   whileInView="visible"
                   viewport={{ once: true, margin: '-80px' }}
                 >
-                  <EditableText field="date" index={i} arrayField="coupleStory" tag="p"
+                  <p
                     className="font-sans text-xs tracking-widest uppercase mb-1"
                     style={{ color: 'var(--color-accent)' }}
                   >
                     {milestone.date}
-                  </EditableText>
-                  <EditableText field="title" index={i} arrayField="coupleStory" tag="h3"
-                    className="font-display text-3xl mb-3"
-                    style={{ color: 'var(--color-text)' }}
-                  >
+                  </p>
+                  <h3 className="font-display text-3xl mb-3" style={{ color: 'var(--color-text)' }}>
                     {milestone.title}
-                  </EditableText>
-                  <EditableText field="description" index={i} arrayField="coupleStory" tag="p" multiline
-                    className="font-sans text-sm leading-relaxed"
-                    style={{ color: 'var(--color-muted)' }}
-                  >
+                  </h3>
+                  <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
                     {milestone.description}
-                  </EditableText>
+                  </p>
                 </motion.div>
 
                 {/* Center dot */}
@@ -106,7 +96,7 @@ export default function CoupleStory() {
             className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px"
             style={{ background: 'var(--color-accent-dim)' }}
           />
-          {d.coupleStory.map((milestone, i) => (
+          {weddingData.coupleStory.map((milestone, i) => (
             <motion.div
               key={i}
               className="relative pb-14 text-center"
@@ -122,18 +112,12 @@ export default function CoupleStory() {
                   style={{ background: 'var(--color-bg)', borderColor: 'var(--color-accent)' }}
                 />
               </div>
-              <EditableText field="date" index={i} arrayField="coupleStory" tag="p"
-                className="font-sans text-xs tracking-widest uppercase mb-1"
-                style={{ color: 'var(--color-accent)' }}
-              >
+              <p className="font-sans text-xs tracking-widest uppercase mb-1" style={{ color: 'var(--color-accent)' }}>
                 {milestone.date}
-              </EditableText>
-              <EditableText field="title" index={i} arrayField="coupleStory" tag="h3"
-                className="font-display text-2xl mb-3"
-                style={{ color: 'var(--color-text)' }}
-              >
+              </p>
+              <h3 className="font-display text-2xl mb-3" style={{ color: 'var(--color-text)' }}>
                 {milestone.title}
-              </EditableText>
+              </h3>
               {milestone.image && (
                 <DevAssetLabel path={milestone.image} className="mb-3">
                   <div
@@ -144,12 +128,9 @@ export default function CoupleStory() {
                   </div>
                 </DevAssetLabel>
               )}
-              <EditableText field="description" index={i} arrayField="coupleStory" tag="p" multiline
-                className="font-sans text-sm leading-relaxed"
-                style={{ color: 'var(--color-muted)' }}
-              >
+              <p className="font-sans text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
                 {milestone.description}
-              </EditableText>
+              </p>
             </motion.div>
           ))}
         </div>

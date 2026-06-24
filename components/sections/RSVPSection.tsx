@@ -2,8 +2,6 @@
 import { motion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
@@ -11,9 +9,7 @@ import SectionHeading from '@/components/ui/SectionHeading'
 
 export default function RSVPSection() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
-  const { rsvp } = d
+  const { rsvp } = weddingData
   const whatsappUrl = `https://wa.me/${rsvp.whatsappNumber}?text=${encodeURIComponent(rsvp.whatsappMessage)}`
 
   return (
@@ -31,16 +27,14 @@ export default function RSVPSection() {
         <SectionHeading en="Will You Attend?" hi="शादी में आएंगे?" />
         <Divider />
 
-        <motion.div
+        <motion.p
           variants={fadeUp}
           className="font-sans text-base leading-relaxed mb-10"
           style={{ color: 'var(--color-muted)' }}
         >
-          <EditableText field="rsvpText" tag="p" multiline>
-            We would be delighted to have you celebrate with us. Please RSVP by{' '}
-            <span style={{ color: 'var(--color-accent)' }}>November 1, 2026</span>.
-          </EditableText>
-        </motion.div>
+          We would be delighted to have you celebrate with us. Please RSVP by{' '}
+          <span style={{ color: 'var(--color-accent)' }}>November 1, 2026</span>.
+        </motion.p>
 
         <motion.div
           className="flex justify-center"

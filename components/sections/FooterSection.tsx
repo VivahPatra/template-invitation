@@ -2,16 +2,12 @@
 import { motion } from 'framer-motion'
 import { Link2, ExternalLink } from 'lucide-react'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
 import Divider from '@/components/ui/Divider'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 
 export default function FooterSection() {
   const weddingData = useWeddingData()
-  const { isEditing, data: editData } = useEditMode()
-  const d = isEditing ? editData : weddingData
-  const { brideName, groomName, hashtag, socialLinks } = d
+  const { brideName, groomName, hashtag, socialLinks } = weddingData
 
   return (
     <footer
@@ -30,14 +26,14 @@ export default function FooterSection() {
           className="font-display text-4xl mb-2"
           style={{ color: 'var(--color-text)' }}
         >
-          <EditableText field="groomName">{groomName}</EditableText> &amp; <EditableText field="brideName">{brideName}</EditableText>
+          {groomName} &amp; {brideName}
         </motion.h2>
         <motion.p
           variants={fadeUp}
           className="font-sans text-sm tracking-widest mb-6"
           style={{ color: 'var(--color-accent)' }}
         >
-          <EditableText field="hashtag">{hashtag}</EditableText>
+          {hashtag}
         </motion.p>
 
         <Divider />
@@ -74,10 +70,10 @@ export default function FooterSection() {
           className="font-sans text-xs leading-relaxed"
           style={{ color: 'var(--color-muted)' }}
         >
-          Made with &#x2764;&#xfe0f; for <EditableText field="brideName">{brideName}</EditableText> &amp; <EditableText field="groomName">{groomName}</EditableText>
+          Made with ❤️ for {brideName} &amp; {groomName}
           <br />
           <span className="opacity-50">
-            &#169; {new Date().getFullYear()} &middot; <EditableText field="hashtag">{hashtag}</EditableText>
+            © {new Date().getFullYear()} · {hashtag}
           </span>
         </motion.p>
       </motion.div>
