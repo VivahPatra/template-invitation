@@ -17,6 +17,7 @@ import RSVPSection from '@/components/sections/RSVPSection'
 import CountdownSection from '@/components/sections/CountdownSection'
 import InfoSection from '@/components/sections/InfoSection'
 import FooterSection from '@/components/sections/FooterSection'
+import SectionGate from '@/components/ui/SectionGate'
 
 export default function WeddingPage() {
   const [loading, setLoading] = useState(true)
@@ -34,29 +35,47 @@ export default function WeddingPage() {
           <ParallaxLanterns />
           <div className="relative overflow-x-hidden">
             <main>
-              <HeroSection />
-              <PeacockDivider />
-              <DiDecor />
-              <InvitationSection />
-              <PeacockDivider />
-              <DiDecor />
-              <CoupleStory />
-              <PeacockDivider />
-              <DiDecor />
-              <GallerySection />
-              <PeacockDivider />
-              <DiDecor />
-              <EventsSection />
-              <PeacockDivider />
-              <DiDecor />
-              <RSVPSection />
-              <PeacockDivider />
-              <DiDecor />
-              <CountdownSection />
-              <PeacockDivider />
-              <DiDecor />
-              <InfoSection />
-              <FooterSection />
+              <SectionGate name="hero">
+                <HeroSection />
+              </SectionGate>
+              <SectionGate name="invitation">
+                <PeacockDivider />
+                <DiDecor />
+                <InvitationSection />
+              </SectionGate>
+              <SectionGate name="coupleStory">
+                <PeacockDivider />
+                <DiDecor />
+                <CoupleStory />
+              </SectionGate>
+              <SectionGate name="gallery">
+                <PeacockDivider />
+                <DiDecor />
+                <GallerySection />
+              </SectionGate>
+              <SectionGate name="events">
+                <PeacockDivider />
+                <DiDecor />
+                <EventsSection />
+              </SectionGate>
+              <SectionGate name="rsvp">
+                <PeacockDivider />
+                <DiDecor />
+                <RSVPSection />
+              </SectionGate>
+              <SectionGate name="countdown">
+                <PeacockDivider />
+                <DiDecor />
+                <CountdownSection />
+              </SectionGate>
+              <SectionGate name="info">
+                <PeacockDivider />
+                <DiDecor />
+                <InfoSection />
+              </SectionGate>
+              <SectionGate name="footer">
+                <FooterSection />
+              </SectionGate>
             </main>
           </div>
         </>
