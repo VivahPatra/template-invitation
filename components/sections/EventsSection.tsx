@@ -154,7 +154,7 @@ function EventNode({
             className="inline-block mt-2 font-sans text-xs tracking-wider underline underline-offset-2 transition-opacity duration-200 hover:opacity-100"
             style={{ color: color, opacity: 0.85 }}
           >
-            📍 View on Maps
+            📍 Get Directions
           </a>
         )}
       </div>
