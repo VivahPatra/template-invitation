@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+// using img for external URL support
 import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
@@ -79,7 +79,7 @@ export default function CoupleStory() {
                           whileHover={{ boxShadow: '0 0 40px rgba(201,168,76,0.3)' }}
                           transition={{ duration: 0.3 }}
                         >
-                          <Image src={milestone.image} alt={milestone.title} fill className="object-cover" />
+                          <img src={milestone.image} alt={milestone.title} className="absolute inset-0 w-full h-full object-cover" />
                         </motion.div>
                       </DevAssetLabel>
                     </motion.div>
@@ -124,7 +124,7 @@ export default function CoupleStory() {
                     className="relative h-44 rounded-xl overflow-hidden"
                     style={{ border: '1px solid var(--color-border)' }}
                   >
-                    <Image src={milestone.image} alt={milestone.title} fill className="object-cover" />
+                    <img src={milestone.image} alt={milestone.title} className="absolute inset-0 w-full h-full object-cover" />
                   </div>
                 </DevAssetLabel>
               )}

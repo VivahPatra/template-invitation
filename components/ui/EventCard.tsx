@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+// using img for external URL support
 import { MapPin, Clock, Calendar } from 'lucide-react'
 import { WeddingEvent } from '@/types/wedding.types'
 import { scaleIn } from '@/lib/animations'
@@ -19,11 +19,10 @@ export default function EventCard({ event }: { event: WeddingEvent }) {
       {event.image ? (
         <DevAssetLabel path={event.image}>
           <div className="relative h-48 w-full overflow-hidden">
-            <Image
+            <img
               src={event.image}
               alt={event.name}
-              fill
-              className="object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
             />
             <div

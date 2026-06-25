@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
+// using img for external URL support
 import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
@@ -25,8 +25,8 @@ function GalleryThumb({ src, index, onClick }: { src: string; index: number; onC
       whileHover={HOVER}
       transition={{ duration: 0.2 }}>
       <DevAssetLabel path={src}>
-        <Image src={src} alt={`Photo ${index + 1}`} fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+        <img src={src} alt={`Photo ${index + 1}`}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
       </DevAssetLabel>
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none"
         style={{ background: OVERLAY }}>
@@ -87,8 +87,8 @@ export default function GallerySection() {
                     whileHover={HOVER}
                     transition={{ duration: 0.2 }}>
                     <DevAssetLabel path={src}>
-                      <Image src={src} alt={`Photo ${i + 4}`} fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                      <img src={src} alt={`Photo ${i + 4}`}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                     </DevAssetLabel>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none"
                       style={{ background: OVERLAY }}>

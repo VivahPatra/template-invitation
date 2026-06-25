@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+// using img for external URL support
 import { useWeddingData } from '@/context/WeddingDataContext'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
@@ -40,7 +40,7 @@ export default function BlessingsSection() {
                       className="relative w-16 h-16 rounded-full overflow-hidden border-2"
                       style={{ borderColor: 'var(--color-accent-dim)' }}
                     >
-                      <Image src={blessing.photo} alt={blessing.name} fill className="object-cover" />
+                      <img src={blessing.photo} alt={blessing.name} className="absolute inset-0 w-full h-full object-cover" />
                     </div>
                   </DevAssetLabel>
                 )}
