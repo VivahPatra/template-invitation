@@ -147,7 +147,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-center px-8 py-10"
+          className="text-center px-8 py-10 -mt-[50px]"
         >
           <p className="font-display shimmer-text"
             style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', letterSpacing: '0.06em', textShadow: '0 2px 24px rgba(0,0,0,0.9)' }}>
