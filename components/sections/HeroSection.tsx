@@ -13,7 +13,7 @@ export default function HeroSection() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.15, 0.5, 0.8], [0.3, 1, 1, 0])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0])
 
   useEffect(() => {
     const open = () => { setCurtainOpen(true); window.removeEventListener('scroll', open) }
@@ -137,7 +137,8 @@ export default function HeroSection() {
 
       {/* Click/Tap hint — visible before open */}
       <motion.div
-        className="absolute inset-0 z-30 flex flex-col items-center justify-center select-none cursor-pointer"
+        className="fixed inset-0 z-30 flex flex-col items-center justify-center select-none cursor-pointer"
+        style={{ height: '100svh' }}
         animate={{ opacity: curtainOpen ? 0 : 1, pointerEvents: curtainOpen ? 'none' : 'auto' }}
         transition={{ duration: 0.4 }}
         onClick={openCurtain}
