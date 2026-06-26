@@ -152,7 +152,7 @@ function EventNode({
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block mt-2 font-sans text-xs tracking-wider underline underline-offset-2 transition-opacity duration-200 hover:opacity-100"
-            style={{ color: color, opacity: 0.85 }}
+            style={{ background: 'var(--color-surface)', color: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}
           >
             📍 Get Directions
           </a>
