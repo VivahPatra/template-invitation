@@ -82,8 +82,8 @@ function EventNode({
           <img
             src={event.image}
             alt={event.name}
-            className="absolute inset-0 rounded-full object-cover transition-all duration-500 group-hover:brightness-100"
-            style={{ width: '100%', height: '100%', filter: 'brightness(0.82) saturate(1.05)' }}
+            className="absolute inset-0 object-contain transition-all duration-500"
+            style={{ width: '100%', height: '100%', filter: 'brightness(1.2) saturate(1.1)' }}
             loading="lazy"
           />
         ) : (

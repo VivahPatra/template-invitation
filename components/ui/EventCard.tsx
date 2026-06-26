@@ -22,7 +22,7 @@ export default function EventCard({ event }: { event: WeddingEvent }) {
             <img
               src={event.image}
               alt={event.name}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain"
               loading="lazy"
             />
             <div
