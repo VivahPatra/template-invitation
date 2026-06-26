@@ -13,7 +13,7 @@ export default function HeroSection() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.15, 0.5, 0.8], [0.3, 1, 1, 0])
 
   useEffect(() => {
     const open = () => { setCurtainOpen(true); window.removeEventListener('scroll', open) }
