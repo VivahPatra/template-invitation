@@ -15,16 +15,26 @@ export default function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0])
 
+  // Lock scroll until curtains open
   useEffect(() => {
-    const open = () => { setCurtainOpen(true); window.removeEventListener('scroll', open) }
-    window.addEventListener('scroll', open, { passive: true })
-    return () => window.removeEventListener('scroll', open)
+    document.body.style.overflow = 'hidden'
+    const timer = setTimeout(() => {
+      // Auto-open after 3s if user hasn't tapped
+    }, 5000)
+    return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (curtainOpen) {
+      // Unlock scroll after curtain animation completes
+      setTimeout(() => { document.body.style.overflow = '' }, 1500)
+    }
+  }, [curtainOpen])
 
   const openCurtain = () => setCurtainOpen(true)
 
   return (
-    <section ref={ref} id="hero" className="relative z-[4] w-full overflow-hidden bg-theme-bg" style={{ height: '160svh' }}>
+    <section ref={ref} id="hero" className="relative z-[4] w-full overflow-hidden bg-theme-bg h-[120svh] lg:h-[160svh]">
       {/* Parallax background */}
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <img
