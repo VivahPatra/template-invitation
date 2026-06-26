@@ -42,7 +42,7 @@ export default function HeroSection() {
 
       {/* Center content — sticky so it stays visible during extended scroll */}
       <motion.div
-        className="sticky top-0 z-10 flex flex-col items-center justify-center text-center px-8"
+        className="sticky top-0 z-10 flex flex-col items-center justify-center text-center px-8 -mt-[75px]"
         style={{ height: '100svh', opacity: contentOpacity }}
         variants={staggerContainer}
         initial="hidden"
