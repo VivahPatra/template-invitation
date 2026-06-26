@@ -11,8 +11,9 @@ export default function HeroSection() {
   const ref = useRef<HTMLElement>(null)
   const [curtainOpen, setCurtainOpen] = useState(false)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0])
 
   useEffect(() => {
     const open = () => { setCurtainOpen(true); window.removeEventListener('scroll', open) }
@@ -23,7 +24,7 @@ export default function HeroSection() {
   const openCurtain = () => setCurtainOpen(true)
 
   return (
-    <section ref={ref} id="hero" className="relative z-[4] w-full overflow-hidden bg-theme-bg" style={{ height: '100svh' }}>
+    <section ref={ref} id="hero" className="relative z-[4] w-full overflow-hidden bg-theme-bg" style={{ height: '160svh' }}>
       {/* Parallax background */}
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <img
@@ -39,9 +40,10 @@ export default function HeroSection() {
       {/* Gold corner frame */}
       <OrnateFrame size={48} offset={28} />
 
-      {/* Center content — visible after curtains open */}
+      {/* Center content — sticky so it stays visible during extended scroll */}
       <motion.div
-        className="relative z-10 flex h-full flex-col items-center justify-center text-center px-8"
+        className="sticky top-0 z-10 flex flex-col items-center justify-center text-center px-8"
+        style={{ height: '100svh', opacity: contentOpacity }}
         variants={staggerContainer}
         initial="hidden"
         animate={curtainOpen ? 'visible' : 'hidden'}
