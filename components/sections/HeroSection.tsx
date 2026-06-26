@@ -15,23 +15,31 @@ export default function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.25])
   const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0])
 
-  // Lock scroll until curtains open
+  // First scroll triggers curtain open → lock scroll during animation → unlock after
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    const timer = setTimeout(() => {
-      // Auto-open after 3s if user hasn't tapped
-    }, 5000)
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    if (curtainOpen) {
-      // Unlock scroll after curtain animation completes
-      setTimeout(() => { document.body.style.overflow = '' }, 1500)
+    const onScroll = () => {
+      if (!curtainOpen) {
+        setCurtainOpen(true)
+        window.removeEventListener('scroll', onScroll)
+        // Lock scroll during curtain animation
+        document.body.style.overflow = 'hidden'
+        window.scrollTo(0, 0)
+        // Unlock after animation completes (1.5s curtain + 0.5s buffer)
+        setTimeout(() => { document.body.style.overflow = '' }, 2000)
+      }
     }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { window.removeEventListener('scroll', onScroll); document.body.style.overflow = '' }
   }, [curtainOpen])
 
-  const openCurtain = () => setCurtainOpen(true)
+  const openCurtain = () => {
+    if (!curtainOpen) {
+      setCurtainOpen(true)
+      document.body.style.overflow = 'hidden'
+      window.scrollTo(0, 0)
+      setTimeout(() => { document.body.style.overflow = '' }, 2000)
+    }
+  }
 
   return (
     <section ref={ref} id="hero" className="relative z-[4] w-full overflow-hidden bg-theme-bg h-[120svh] lg:h-[160svh]">
