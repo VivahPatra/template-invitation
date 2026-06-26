@@ -103,11 +103,6 @@ function EventNode({
           </div>
         )}
 
-        {/* Inner vignette */}
-        <div
-          className="absolute inset-0 rounded-full pointer-events-none"
-          style={{ background: `radial-gradient(circle, transparent 50%, ${color}18 100%)` }}
-        />
       </div>
 
       {/* Name + date */}
