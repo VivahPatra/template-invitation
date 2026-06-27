@@ -111,5 +111,6 @@ export interface WeddingConfig {
   seo: SEOConfig
   defaultTheme: 'gold' | 'maroon' | 'emerald'
   contactPhone: string
+  groomFirst?: boolean
   sections?: Record<string, boolean>
 }

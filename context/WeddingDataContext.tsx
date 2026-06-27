@@ -213,6 +213,7 @@ function mapEditorToConfig(editor: EditorPayload, base: WeddingConfig): WeddingC
 
   // Name order swap
   if (editor.groomFirst === false) {
+    merged.groomFirst = false
     const tmpName = merged.groomName; merged.groomName = merged.brideName; merged.brideName = tmpName
     const tmpParents = merged.groomParents; merged.groomParents = merged.brideParents; merged.brideParents = tmpParents
     if ("groomSubtitle" in merged && "brideSubtitle" in merged) { const tmpSub = merged.groomSubtitle; merged.groomSubtitle = merged.brideSubtitle; merged.brideSubtitle = tmpSub }
