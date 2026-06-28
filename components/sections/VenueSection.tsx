@@ -6,6 +6,7 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 import Divider from '@/components/ui/Divider'
 import { fadeUp } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { formatShortDate } from '@/lib/utils'
 
 export default function VenueSection() {
   const weddingData = useWeddingData()
@@ -23,8 +24,11 @@ export default function VenueSection() {
           <h3 className="font-display text-3xl mb-2" style={{ color: 'var(--color-text)' }}>
             {venue.name}
           </h3>
-          <p className="font-sans text-sm" style={{ color: 'var(--color-muted)' }}>
+          <p className="font-sans text-sm mb-2" style={{ color: 'var(--color-muted)' }}>
             {venue.address}
+          </p>
+          <p className="font-sans text-xs tracking-[0.3em] uppercase mb-8" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+            {formatShortDate(weddingData.weddingDate)} · {weddingData.weddingDate.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', hour12: true })}
           </p>
           <a
             href={venue.directionsUrl}
