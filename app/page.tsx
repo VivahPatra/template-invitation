@@ -13,6 +13,7 @@ import InvitationSection from '@/components/sections/InvitationSection'
 import CoupleStory from '@/components/sections/CoupleStory'
 import GallerySection from '@/components/sections/GallerySection'
 import EventsSection from '@/components/sections/EventsSection'
+import VenueSection from '@/components/sections/VenueSection'
 import RSVPSection from '@/components/sections/RSVPSection'
 import CountdownSection from '@/components/sections/CountdownSection'
 import InfoSection from '@/components/sections/InfoSection'
@@ -57,6 +58,11 @@ export default function WeddingPage() {
                 <PeacockDivider />
                 <DiDecor />
                 <EventsSection />
+              </SectionGate>
+              <SectionGate name="venue">
+                <PeacockDivider />
+                <DiDecor />
+                <VenueSection />
               </SectionGate>
               <SectionGate name="rsvp">
                 <PeacockDivider />
