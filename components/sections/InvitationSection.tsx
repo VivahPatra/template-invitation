@@ -48,7 +48,7 @@ export default function InvitationSection() {
             className="font-sans text-xs tracking-[0.45em] uppercase mb-5 glow-pulse"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; {weddingData.invitationSubtitle || 'With Joy & Blessings'} &nbsp; <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
+            <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; {weddingData.invitationSubtitle || 'With Joy & Blessings'} &nbsp; <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
           </motion.p>
 
           <motion.h2

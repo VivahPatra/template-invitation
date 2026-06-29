@@ -20,7 +20,7 @@ export default function DiDecor() {
       <div className="absolute left-3 sm:left-6" style={{ top: 0 }}>
         <div style={{ position: 'relative', animation: 'diSwayLeft 3.5s ease-in-out infinite' }}>
           <div className="ganesha-backdrop" style={{ position: 'absolute', inset: -10, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,180,50,0.6) 0%, rgba(196,154,108,0.25) 50%, transparent 75%)', filter: 'blur(10px)' }} />
-          <img src="/assets/di.png" alt="" style={{
+          <img src="/assets/di.webp" alt="" style={{
             width: 64, height: 'auto', opacity: 0.85, position: 'relative', zIndex: 1,
             animation: 'diGlow 2.5s ease-in-out infinite',
           }} />
@@ -29,7 +29,7 @@ export default function DiDecor() {
       <div className="absolute right-3 sm:right-6" style={{ top: 0 }}>
         <div style={{ position: 'relative', animation: 'diSwayRight 3.5s ease-in-out infinite' }}>
           <div className="ganesha-backdrop" style={{ position: 'absolute', inset: -10, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,180,50,0.6) 0%, rgba(196,154,108,0.25) 50%, transparent 75%)', filter: 'blur(10px)' }} />
-          <img src="/assets/di.png" alt="" style={{
+          <img src="/assets/di.webp" alt="" style={{
             width: 64, height: 'auto', opacity: 0.85, position: 'relative', zIndex: 1, transform: 'scaleX(-1)',
             animation: 'diGlow 2.5s ease-in-out 0.5s infinite',
           }} />

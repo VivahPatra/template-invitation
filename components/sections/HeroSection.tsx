@@ -46,7 +46,7 @@ export default function HeroSection() {
       {/* Parallax background */}
       <motion.div className="absolute inset-0" style={{ y, scale }}>
         <img
-          src="/assets/hero.png"
+          src="/assets/hero.webp"
           alt=""
           className="w-full h-full object-cover object-center"
           style={{ filter: 'brightness(0.75) saturate(1)' }}
@@ -72,7 +72,7 @@ export default function HeroSection() {
           style={{ color: 'var(--color-accent)' }}>
           <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
             <div className="ganesha-backdrop" style={{ position: 'absolute', inset: -8, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,180,50,0.6) 0%, rgba(245,158,11,0.25) 50%, transparent 75%)', filter: 'blur(10px)' }} />
-            <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 48, height: 'auto', position: 'relative', zIndex: 1 }} />
+            <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 48, height: 'auto', position: 'relative', zIndex: 1 }} />
           </div>
         </motion.p>
 
@@ -128,7 +128,7 @@ export default function HeroSection() {
         transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
       >
         <img
-          src="/assets/opener.png"
+          src="/assets/opener.webp"
           alt=""
           className="max-h-full w-auto object-contain"
           style={{ userSelect: 'none', pointerEvents: 'none', filter: 'brightness(0.8)', transform: 'scaleX(-1)' }}
@@ -145,7 +145,7 @@ export default function HeroSection() {
         transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], delay: 0.08 }}
       >
         <img
-          src="/assets/opener.png"
+          src="/assets/opener.webp"
           alt=""
           className="max-h-full w-auto object-contain"
           style={{ userSelect: 'none', pointerEvents: 'none', filter: 'brightness(0.8)' }}

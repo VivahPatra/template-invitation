@@ -97,7 +97,7 @@ function EventNode({
             {emoji === 'diya'
               ? <div style={{ position: 'relative', display: 'inline-flex' }}>
                   <div className="ganesha-backdrop" style={{ position: 'absolute', inset: -6, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,180,50,0.6) 0%, rgba(245,158,11,0.25) 50%, transparent 75%)', filter: 'blur(8px)' }} />
-                  <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 40, height: 'auto', position: 'relative', zIndex: 1 }} />
+                  <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 40, height: 'auto', position: 'relative', zIndex: 1 }} />
                 </div>
               : emoji}
           </div>
@@ -188,7 +188,7 @@ export default function EventsSection() {
             className="font-sans text-xs tracking-[0.4em] uppercase mb-4"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; The Celebrations &nbsp; <img src="/assets/diya.png" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
+            <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; The Celebrations &nbsp; <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
           </motion.p>
           <motion.h2
             variants={fadeUp}

@@ -104,7 +104,7 @@ export const weddingData: WeddingConfig = {
       venue: 'Taj Palace Hotel',
       venueAddress: 'Sardar Patel Marg, New Delhi 110021',
       venueMapLink: 'https://maps.google.com/?q=Taj+Palace+Hotel+New+Delhi',
-      image: '/assets/events/engagement.png',
+      image: '/assets/events/engagement.webp',
     },
     {
       id: 'mehendi',
@@ -115,7 +115,7 @@ export const weddingData: WeddingConfig = {
       venue: 'Sharma Residence',
       venueAddress: 'B-42, Vasant Vihar, New Delhi 110057',
       venueMapLink: 'https://maps.google.com/?q=Vasant+Vihar+New+Delhi',
-      image: '/assets/events/mehendi.png',
+      image: '/assets/events/mehendi.webp',
     },
     {
       id: 'haldi',
@@ -126,7 +126,7 @@ export const weddingData: WeddingConfig = {
       venue: 'Sharma Residence',
       venueAddress: 'B-42, Vasant Vihar, New Delhi 110057',
       venueMapLink: 'https://maps.google.com/?q=Vasant+Vihar+New+Delhi',
-      image: '/assets/events/haldi.png',
+      image: '/assets/events/haldi.webp',
     },
     {
       id: 'sangeet',
@@ -137,7 +137,7 @@ export const weddingData: WeddingConfig = {
       venue: 'The Grand Ballroom',
       venueAddress: 'Nelson Mandela Marg, New Delhi 110070',
       venueMapLink: 'https://maps.google.com/?q=The+Grand+New+Delhi',
-      image: '/assets/events/sangeet.png',
+      image: '/assets/events/sangeet.webp',
     },
     {
       id: 'wedding',
@@ -148,7 +148,7 @@ export const weddingData: WeddingConfig = {
       venue: 'ISKCON Temple Grounds',
       venueAddress: 'Hare Krishna Hill, Sant Nagar, New Delhi 110019',
       venueMapLink: 'https://maps.google.com/?q=ISKCON+New+Delhi',
-      image: '/assets/events/wedding.png',
+      image: '/assets/events/wedding.webp',
     },
     {
       id: 'reception',
@@ -159,7 +159,7 @@ export const weddingData: WeddingConfig = {
       venue: 'Taj Palace Hotel',
       venueAddress: 'Sardar Patel Marg, New Delhi 110021',
       venueMapLink: 'https://maps.google.com/?q=Taj+Palace+Hotel+New+Delhi',
-      image: '/assets/events/reception.png',
+      image: '/assets/events/reception.webp',
     },
   ],
 
