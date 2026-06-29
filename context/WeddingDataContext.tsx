@@ -222,19 +222,19 @@ function mapEditorToConfig(editor: EditorPayload, base: WeddingConfig): WeddingC
 }
 
 export function WeddingDataProvider({ children }: { children: ReactNode }) {
-  const isIframe = typeof window !== 'undefined' && window.parent !== window
   const [data, setData] = useState<WeddingConfig>(defaultData)
-  const [ready, setReady] = useState(!isIframe)
+  const [ready, setReady] = useState(true)
 
   useEffect(() => {
     const inIframe = window.parent !== window
+    if (inIframe) setReady(false)
 
     function handleMessage(event: MessageEvent) {
       if (event.data?.type !== 'VIVAHPATRA_UPDATE') return
       const payload = (event.data.data || event.data.payload) as EditorPayload | undefined
       if (!payload) return
       setData((prev) => mapEditorToConfig(payload, prev))
-      if (!ready) setReady(true)
+      setReady(true)
     }
 
     window.addEventListener('message', handleMessage)
