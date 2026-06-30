@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import type { WeddingEvent } from '@/types/wedding.types'
@@ -34,6 +35,7 @@ function EventNode({
   isHero?: boolean
   delay?: number
 }) {
+  const [imgError, setImgError] = useState(false)
   const color = EVENT_COLORS[event.id] ?? 'var(--color-accent)'
   const emoji = EVENT_EMOJI[event.id] ?? 'diya'
   const circleSize = isHero ? 130 : 100
@@ -78,13 +80,14 @@ function EventNode({
         />
 
         {/* Image or emoji */}
-        {event.image ? (
+        {event.image && !imgError ? (
           <img
             src={event.image}
             alt={event.name}
             className="absolute inset-0 object-contain transition-all duration-500"
             style={{ width: '100%', height: '100%', filter: 'brightness(1.2) saturate(1.1)' }}
             loading="lazy"
+            onError={() => setImgError(true)}
           />
         ) : (
           <div
