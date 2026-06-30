@@ -101,7 +101,7 @@ export default function InvitationSection() {
               <div className="text-center">
                 <span
                   className="font-display shimmer-text block"
-                  style={{ fontSize: 'clamp(2rem, 5.5vw, 3rem)' }}
+                  style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.5rem)', lineHeight: 1.2, padding: '0.1em 0' }}
                 >
                   {weddingData.groomName}
                 </span>
@@ -120,7 +120,7 @@ export default function InvitationSection() {
               <div className="text-center">
                 <span
                   className="font-display shimmer-text block"
-                  style={{ fontSize: 'clamp(2rem, 5.5vw, 3rem)' }}
+                  style={{ fontSize: 'clamp(1.8rem, 4.5vw, 2.5rem)', lineHeight: 1.2, padding: '0.1em 0' }}
                 >
                   {weddingData.brideName}
                 </span>
