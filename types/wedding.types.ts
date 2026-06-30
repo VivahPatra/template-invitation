@@ -16,6 +16,7 @@ export interface WeddingEvent {
   venueAddress: string
   venueMapLink: string
   image: string
+  hidden?: boolean
 }
 
 export interface Blessing {

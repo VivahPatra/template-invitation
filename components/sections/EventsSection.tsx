@@ -162,7 +162,7 @@ function EventNode({
 
 export default function EventsSection() {
   const weddingData = useWeddingData()
-  const events = weddingData.events
+  const events = weddingData.events.filter((e) => !e.hidden)
   const half = Math.ceil(events.length / 2)
   const row1 = events.slice(0, half)       // Engagement, Mehendi, Haldi
   const row2 = events.slice(half)           // Sangeet, Wedding, Reception
