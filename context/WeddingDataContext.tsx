@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import React, { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { weddingData as defaultData } from '@/data/wedding-data'
 import type { WeddingConfig } from '@/types/wedding.types'
 
@@ -223,15 +223,26 @@ function mapEditorToConfig(editor: EditorPayload, base: WeddingConfig): WeddingC
   return merged
 }
 
+const PreviewContext = React.createContext(false)
+
+export function useIsPreview(): boolean {
+  return React.useContext(PreviewContext)
+}
+
 export function WeddingDataProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<WeddingConfig>(defaultData)
   const [ready, setReady] = useState(true)
+  const [isPreview, setIsPreview] = useState(false)
 
   useEffect(() => {
     const inIframe = window.parent !== window
     if (inIframe) setReady(false)
 
     function handleMessage(event: MessageEvent) {
+      if (event.data?.type === 'VIVAHPATRA_PREVIEW_MODE') {
+        setIsPreview(true)
+        return
+      }
       if (event.data?.type !== 'VIVAHPATRA_UPDATE') return
       const payload = (event.data.data || event.data.payload) as EditorPayload | undefined
       if (!payload) return
@@ -253,7 +264,9 @@ export function WeddingDataProvider({ children }: { children: ReactNode }) {
 
   return (
     <WeddingDataContext.Provider value={data}>
-      {children}
+      <PreviewContext.Provider value={isPreview}>
+        {children}
+      </PreviewContext.Provider>
     </WeddingDataContext.Provider>
   )
 }
