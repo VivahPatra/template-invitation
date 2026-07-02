@@ -15,7 +15,7 @@ export const weddingData: WeddingConfig = {
   heroVideo: '/assets/hero-video.mp4',
   bridePhoto: '/assets/bride.jpg',
   groomPhoto: '/assets/groom.jpg',
-  invitationMusic: '/assets/music.mp3',
+  invitationMusic: 'https://vivahpatra.co/music/saathiya.mp3',
 
   galleryImages: [
     '/assets/gallery/gallery-1.jpg',

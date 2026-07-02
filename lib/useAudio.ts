@@ -1,9 +1,11 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import { useIsPreview } from '@/context/WeddingDataContext'
 
 export function useAudio(src: string) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const isPreview = useIsPreview()
 
   useEffect(() => {
     const audio = new Audio(src)
@@ -15,6 +17,12 @@ export function useAudio(src: string) {
       audio.src = ''
     }
   }, [src])
+
+  useEffect(() => {
+    if (isPreview && audioRef.current) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
+    }
+  }, [isPreview])
 
   const toggle = () => {
     const audio = audioRef.current
