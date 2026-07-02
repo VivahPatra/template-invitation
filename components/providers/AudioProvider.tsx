@@ -6,11 +6,13 @@ import { useWeddingData } from '@/context/WeddingDataContext'
 interface AudioContextValue {
   isPlaying: boolean
   toggle: () => void
+  showHint: boolean
 }
 
 const AudioContext = createContext<AudioContextValue>({
   isPlaying: false,
   toggle: () => {},
+  showHint: false,
 })
 
 export function AudioProvider({ children }: { children: React.ReactNode }) {

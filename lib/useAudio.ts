@@ -5,6 +5,7 @@ import { useIsPreview } from '@/context/WeddingDataContext'
 export function useAudio(src: string) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [showHint, setShowHint] = useState(false)
   const isPreview = useIsPreview()
 
   useEffect(() => {
@@ -19,14 +20,17 @@ export function useAudio(src: string) {
   }, [src])
 
   useEffect(() => {
-    if (isPreview && audioRef.current) {
-      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
-    }
+    if (!isPreview || !audioRef.current) return
+    audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {
+      setShowHint(true)
+      setTimeout(() => setShowHint(false), 4000)
+    })
   }, [isPreview])
 
   const toggle = () => {
     const audio = audioRef.current
     if (!audio) return
+    setShowHint(false)
     if (isPlaying) {
       audio.pause()
       setIsPlaying(false)
@@ -35,5 +39,5 @@ export function useAudio(src: string) {
     }
   }
 
-  return { isPlaying, toggle }
+  return { isPlaying, toggle, showHint }
 }
