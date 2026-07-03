@@ -7,7 +7,6 @@ import {
 } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
-import { AudioProvider } from '@/components/providers/AudioProvider'
 import { LanguageProvider } from '@/components/providers/LanguageProvider'
 import { weddingData } from '@/data/wedding-data'
 
@@ -68,9 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="bg-theme-bg text-theme-text font-sans antialiased">
         <ThemeProvider>
-          <AudioProvider>
-            <LanguageProvider>{children}</LanguageProvider>
-          </AudioProvider>
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
