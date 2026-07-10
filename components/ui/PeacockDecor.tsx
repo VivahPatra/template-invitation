@@ -9,7 +9,7 @@ export default function PeacockDecor({ flip = false, size = 72, className = '', 
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/assets/peacock.gif"
+      src="/assets/peacock.webp"
       alt=""
       aria-hidden
       width={size}

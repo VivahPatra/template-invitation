@@ -35,7 +35,7 @@ export default function GallerySection() {
                   onClick={() => setLightboxIndex(i)}>
                   <div className="relative overflow-hidden rounded-xl transition-all duration-300 group-hover:shadow-[0_8px_40px_rgba(201,168,76,0.2)]"
                     style={{ border: '1px solid rgba(201,168,76,0.2)' }}>
-                    <img src={src} alt={`Photo ${i + 1}`}
+                    <img loading="lazy" src={src} alt={`Photo ${i + 1}`}
                       className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ aspectRatio: i % 3 === 0 ? '3/4' : i % 3 === 1 ? '4/3' : '1/1' }}
                       loading="lazy" />

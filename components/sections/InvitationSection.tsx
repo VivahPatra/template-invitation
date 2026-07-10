@@ -48,7 +48,7 @@ export default function InvitationSection() {
             className="font-sans text-xs tracking-[0.45em] uppercase mb-5 glow-pulse"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; {weddingData.invitationSubtitle || 'With Joy & Blessings'} &nbsp; <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
+            <img loading="lazy" src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; {weddingData.invitationSubtitle || 'With Joy & Blessings'} &nbsp; <img loading="lazy" src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
           </motion.p>
 
           <motion.h2
@@ -88,7 +88,7 @@ export default function InvitationSection() {
             <div className="flex flex-col items-center mb-6">
               <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div className="ganesha-backdrop" style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,210,80,0.75) 0%, rgba(201,168,76,0.35) 55%, transparent 75%)', filter: 'blur(10px)' }} />
-                <img src="/assets/ganesha.gif" alt="Ganesha" className="ganesha-glow" style={{ width: 58, height: 'auto', position: 'relative', zIndex: 1 }} />
+                <img loading="lazy" src="/assets/ganesha.webp" alt="Ganesha" className="ganesha-glow" style={{ width: 58, height: 'auto', position: 'relative', zIndex: 1 }} />
               </div>
               <p className="font-sans text-xs tracking-[0.35em] uppercase mt-2 glow-pulse"
                 style={{ color: 'var(--color-accent)', opacity: 0.55 }}>
