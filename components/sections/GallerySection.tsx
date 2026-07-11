@@ -37,8 +37,7 @@ export default function GallerySection() {
                     style={{ border: '1px solid rgba(201,168,76,0.2)' }}>
                     <img loading="lazy" src={src} alt={`Photo ${i + 1}`}
                       className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      style={{ aspectRatio: i % 3 === 0 ? '3/4' : i % 3 === 1 ? '4/3' : '1/1' }}
-                      loading="lazy" />
+                      style={{ aspectRatio: i % 3 === 0 ? '3/4' : i % 3 === 1 ? '4/3' : '1/1' }} />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                       style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }}>
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
