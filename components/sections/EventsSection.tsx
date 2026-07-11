@@ -191,7 +191,7 @@ export default function EventsSection() {
             className="font-sans text-xs tracking-[0.4em] uppercase mb-4"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            <img loading="lazy" src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; The Celebrations &nbsp; <img loading="lazy" src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
+            <img loading="lazy" src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} /> &nbsp; The Celebrations &nbsp; <img src="/assets/diya.webp" alt="" className="lantern-glow" style={{ width: 32, height: 'auto', display: 'inline', verticalAlign: 'middle' }} />
           </motion.p>
           <motion.h2
             variants={fadeUp}
