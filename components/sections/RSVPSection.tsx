@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
@@ -24,7 +24,8 @@ export default function RSVPSection() {
   }, [])
 
   const handleSend = (guestCount: number, fullMessage: string) => {
-    const whatsappUrl = `https://wa.me/${rsvp.whatsappNumber}?text=${encodeURIComponent(fullMessage)}`
+    const safeNumber = (rsvp.whatsappNumber ?? '').replace(/[^\d+]/g, '').replace(/(?!^\+)\+/g, '')
+    const whatsappUrl = `https://wa.me/${safeNumber}?text=${encodeURIComponent(fullMessage)}`
     window.open(whatsappUrl, '_blank')
     setModalOpen(false)
     setResponded(true)

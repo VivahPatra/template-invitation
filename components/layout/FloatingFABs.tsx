@@ -12,7 +12,8 @@ export default function FloatingFABs() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    const src = invitationMusic || ''
+    const raw = invitationMusic || ''
+    const src = /^https:\/\//.test(raw) || /^\/[^/]/.test(raw) ? raw : ''
     if (!src) return
     const audio = new Audio(src)
     audio.loop = true
